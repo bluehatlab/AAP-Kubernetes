@@ -1,12 +1,12 @@
 ---
 - name: Uncordon node
-  command: >-
+  ansible.builtin.command: >-
     {{ bin_dir }}/kubectl uncordon
     {{ kube_override_hostname|default(inventory_hostname) }}
   delegate_to: "{{ groups['kube-master'][0] }}"
 
 - name: Wait for node to uncordon
-  command: >-
+  ansible.builtin.command: >-
     {{ bin_dir }}/kubectl get node
     {{ kube_override_hostname|default(inventory_hostname) }}
     -o json
