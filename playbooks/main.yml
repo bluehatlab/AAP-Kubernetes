@@ -26,7 +26,7 @@
       - not (kubectl_get_node['stdout'] | from_json).spec.unschedulable is defined
     block:
       - name: Cordon & drain node
-        include_tasks: drain.yml
+        include_tasks: drain-node.yml
 
       - name: Upgrade the Operating System
         include_tasks: apply-update.yml
