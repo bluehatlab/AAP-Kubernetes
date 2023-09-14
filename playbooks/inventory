@@ -9,7 +9,7 @@ ansible_python_interpreter=/usr/bin/python3
 # ## different ip than the default iface
 # ## We should set etcd_member_name for etcd cluster. The node that is not a etcd member do not need to set the value, or can set the empty string value.
 [all]
-k8s-master0.bluehatlab.net ansible_host=52.118.162.246 etcd_member_name=etcd1
+k8s-master0.bluehatlab.net ansible_host=52.118.162.232 etcd_member_name=etcd1
 k8s-node1.bluehatlab.net ansible_host=52.118.162.213 etcd_member_name=etcd2
 k8s-node2.bluehatlab.net ansible_host=52.118.162.233 etcd_member_name=etcd3
 
