@@ -10,11 +10,11 @@
   tasks:
   - name: Get the node's details
     command: >-
-      {{ bin_dir }}/kubectl get node
+      /usr/local/bin/kubectl get node
       {{ kube_override_hostname|default(inventory_hostname) }}
       -o json
     register: kubectl_get_node
-    delegate_to: "{{ groups['kube-master'][0] }}"
+    delegate_to: "{{ groups['kube_control_plane'][0] }}"
     failed_when: false
     changed_when: false
 
