@@ -10,7 +10,7 @@
   tasks:
   - name: Get the node's details
     command: >-
-      /usr/local/bin/kubectl get node
+      kubectl get node
       {{ kube_override_hostname|default(inventory_hostname) }}
       -o json
     register: kubectl_get_node
