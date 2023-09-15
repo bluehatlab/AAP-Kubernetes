@@ -1,13 +1,13 @@
 ---
 - name: Cordon node
   ansible.builtin.command: >-
-    /usr/local/bin/kubectl cordon
+    kubectl cordon
     {{ kube_override_hostname|default(inventory_hostname) }}
   delegate_to: "{{ groups['kube_control_plane'][0] }}"
 
 - name: Wait for node to cordon
   ansible.builtin.command: >-
-    /usr/local/bin/kubectl get node
+    kubectl get node
     {{ kube_override_hostname|default(inventory_hostname) }}
     -o json
   register: wait_for_cordon
@@ -19,7 +19,7 @@
 
 - name: Drain node
   ansible.builtin.command: >-
-    /usr/local/bin/kubectl drain
+    kubectl drain
     --force
     --ignore-daemonsets
     --grace-period 300
