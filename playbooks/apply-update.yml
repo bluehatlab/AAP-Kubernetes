@@ -16,4 +16,3 @@
 - name: Reboot the server
   ansible.builtin.reboot:
     post_reboot_delay: 30
-  when: reboot_required.rc == 1
