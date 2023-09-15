@@ -1,9 +1,7 @@
 ---
 - name: Update all packages
   ansible.builtin.dnf:
-    name: 
-      - "*"
-      - kernel
+    name: "*"
     state: latest
 
 - name: Check if reboot is required
