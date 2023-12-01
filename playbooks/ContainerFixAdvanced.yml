@@ -1,0 +1,31 @@
+---
+- name: Advanced Container Remediation
+  hosts: webserver
+  become: true
+
+  tasks:
+    - name: Stop the existing container
+      community.docker.docker_container:
+        name: webapp
+
+    - name: Remove the existing container
+      community.docker.docker_container:
+        name: webapp
+        state: absent
+
+    - name: Create the container again
+      community.docker.docker_container:
+        name: webapp
+        image: nginx
+        state: present
+        ports:
+          - "0.0.0.0:80:80/tcp"
+
+    - name: Start the container
+      community.docker.docker_container:
+        name: webapp
+        state: started
+
+    - name: Check that you can connect (GET) to a page and it returns a status 200
+      ansible.builtin.uri:
+        url: http://splash.bluehatlab.net

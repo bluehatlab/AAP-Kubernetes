@@ -1,0 +1,13 @@
+---
+- name: Simple Container Remediation
+  hosts: webserver
+  become: true
+
+  tasks:
+    - name: Recreate container without ports
+      community.docker.docker_container:
+        name: webapp
+        state: started
+        recreate: true
+        ports:
+          - "9002"

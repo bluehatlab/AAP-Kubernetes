@@ -1,0 +1,15 @@
+---
+- name: Simple Container Remediation
+  hosts: webserver
+  become: true
+
+  tasks:
+    - name: Restart the Nginx docker container
+      community.docker.docker_container:
+        name: webapp
+        state: started
+        restart: true
+
+    - name: Check that you can connect (GET) to a page and it returns a status 200
+      ansible.builtin.uri:
+        url: http://splash.bluehatlab.net
