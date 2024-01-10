@@ -17,7 +17,7 @@
     - name: Create the container again
       containers.podman.podman_container:
         name: webapp
-        image: nginx
+        image: docker.io/library/nginx:latest
         state: present
         ports:
           - "0.0.0.0:80:80/tcp"
