@@ -1,11 +1,11 @@
 ---
 - name: Simple Container Remediation
-  hosts: webserver
+  hosts: baremetal
   become: true
 
   tasks:
     - name: Recreate container without ports
-      community.docker.docker_container:
+      containers.podman.podman_container:
         name: webapp
         state: started
         recreate: true
